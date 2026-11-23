@@ -101,10 +101,10 @@ document.getElementById('grid').innerHTML=rows.map(r=>(M[r[2]]?`<button type="bu
 render();
 function cnt(x){const a=[];if(x.p)a.push(x.p.length+' photo'+(x.p.length>1?'s':''));if(x.v)a.push(x.v.length+' video'+(x.v.length>1?'s':''));if(x.map)a.push('map');return a.join(' · ')}
 const V=document.getElementById('viewer');
-function ig(c,kind){return `<div class="emb ${kind}"><iframe src="https://www.instagram.com/p/${c}/embed/" loading="lazy" allowtransparency="true" allow="autoplay; encrypted-media; fullscreen" title="Instagram ${kind==='vid'?'video':'photo'}"></iframe><a class="emb-l" href="https://www.instagram.com/p/${c}/" target="_blank" rel="noopener">Open on Instagram ↗</a></div>`}
+function ig(c,kind){return `<div class="emb ${kind}"><iframe src="https://www.instagram.com/p/${c}/embed/" allowtransparency="true" allow="autoplay; encrypted-media; fullscreen" title="Instagram ${kind==='vid'?'video':'photo'}"></iframe><a class="emb-l" href="https://www.instagram.com/p/${c}/" target="_blank" rel="noopener">Open on Instagram ↗</a></div>`}
 function openV(k){const r=D.find(x=>x[2]===k),x=M[k];if(!r)return;
 let h=`<div class="v-head"><div><div class="tags"><span class="tag">${esc(r[1])}</span><span class="tag ind">${esc(r[0])}</span></div><h2>${esc(r[2])}</h2><div class="where">${esc(r[3])}</div><p>${esc(r[4])}</p></div><button type="button" class="v-x" aria-label="Close">✕</button></div>`;
-if(x.map)h+=`<h4>On Google Maps</h4><div class="mapw"><iframe loading="lazy" src="https://maps.google.com/maps?q=${encodeURIComponent(x.map)}&z=16&output=embed" title="Map"></iframe></div>`;
+if(x.map)h+=`<h4>On Google Maps</h4><div class="mapw"><iframe src="https://maps.google.com/maps?q=${encodeURIComponent(x.map)}&z=16&output=embed" title="Map"></iframe></div>`;
 if(x.v)h+=`<h4>Videos</h4><div class="mrow">${x.v.map(c=>ig(c,'vid')).join('')}</div>`;
 if(x.p)h+=`<h4>Photos</h4><div class="mrow">${x.p.map(c=>ig(c,'pic')).join('')}</div>`;
 h+=`<div class="v-foot"><span>Posts are shown from the brand's own Instagram. Reference only — not a Rock Papers Scissors project.</span><a class="btn btn-primary" href="https://rockpapersscissors.in/contact.html">Build mine to this level →</a></div>`;
